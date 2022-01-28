@@ -13,6 +13,14 @@ def completed_view(request):
     return render(request, "completed_tasks.html", {"tasks": completed_tasks})
 
 
+def all_tasks_view(request):
+    return render(
+        request,
+        "all_tasks.html",
+        {"active_tasks": active_tasks, "completed_tasks": completed_tasks},
+    )
+
+
 def add_task_view(request):
     task_to_add = request.GET.get("task")
     active_tasks.append(task_to_add)

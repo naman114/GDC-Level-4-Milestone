@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="form-container">
+    <!-- Display pending tasks -->
+    <h1>Incomplete Tasks</h1>
+    <table class="table">
+      <tr class="table">
+        <th class="table table-item">S. No.</th>
+        <th class="table table-item">Task Name</th>
+        <th class="table table-item">Action</th>
+      </tr>
+      {% for task in active_tasks %}
+      <tr>
+        <td class="table table-item">{{ forloop.counter }}.</td>
+        <td class="table table-item">{{ task }}</td>
+        <td class="table table-item">
+          <a href="/delete-task/{{forloop.counter}}">Delete task</a> <br />
+          <a href="/complete_task/{{forloop.counter}}">Mark as complete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+  <div class="form-container">
+    <!-- Display completed tasks -->
+    <h1>Completed Tasks</h1>
+    <table class="table">
+      <tr class="table">
+        <th class="table table-item">S. No.</th>
+        <th class="table table-item">Task Name</th>
+      </tr>
+      {% for task in completed_tasks %}
+      <tr>
+        <td class="table table-item">{{ forloop.counter }}.</td>
+        <td class="table table-item">{{ task }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+<style>
+  .container {
+    display: flex;
+    justify-content: space-around;
+  }
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .table {
+    border: 1px solid black;
+  }
+  .table-item {
+    padding: 10px;
+  }
+</style>
